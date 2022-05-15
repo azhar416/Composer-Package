@@ -7,8 +7,8 @@
 ## Daftar Isi
 
 - [Composer](Composer.md)
-- [Orchestra Testbench & Testing]
-- [Service Provider]
+- [Orchestra Testbench & Testing](OrchestraTestbench.md)
+- [Service Provider](ServiceProvider.md)
 - [Facade]
 - [Configuration]
 - [Command]
