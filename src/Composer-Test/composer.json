@@ -1,0 +1,32 @@
+{
+    "name": "azhar416/composer-test",
+    "description": "Simple hello world Composer package.",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "azhar\\helloworld\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "azhar\\helloworld\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "azhar416",
+            "email": "rar.azhar.416@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "orchestra/testbench": "^7.4",
+        "phpunit/phpunit": "^9.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "azhar\\helloworld\\CalculatorServiceProvider"
+            ]
+        }
+    }
+}
