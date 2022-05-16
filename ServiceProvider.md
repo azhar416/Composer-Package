@@ -22,3 +22,42 @@ Tutorial ini akan menjelaskan cara membuat service provider sederhana untuk pack
 
 ### Langkah pertama
 
+Buat sebuah kelas `CalculatorServiceProvider` yang men-extend `Illuminate\Support\ServiceProvider`:
+
+```php
+<?php
+
+namespace azhar\helloworld;
+
+use Illuminate\Support\ServiceProvider;
+
+class CalculatorServiceProvider extends ServiceProvider
+{
+    public function register()
+    {
+        // initiate class and binding class into service container.
+    }
+
+    public function boot()
+    {
+        // called after all services are registered.
+    }
+}
+```
+
+### Langkah kedua
+
+Kita akan meregistrasi service provider yang sudah kita buat agar dapat dilakukan *autoloading* oleh Composer. Tambahkan bagian berikut pada `composer.json`:
+```json
+{
+    "extra": {
+        "laravel": {
+            "providers": [
+                "azhar\\helloworld\\CalculatorServiceProvider"
+            ]
+        }
+    }
+}
+```
+
+Setelah melakukan registrasi, maka semua project yang menggunakan package kita akan dapat menggunakan apapun yang sudah kita registrasi pada service provider.

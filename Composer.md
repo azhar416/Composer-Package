@@ -119,11 +119,13 @@ Kita dapat memulai membuat aplikasi kita pada directory `/src`.
 Jika kita membuka file `composer.json`, 
 
 ```json
+{
     "autoload": {
         "psr-4": {
             "azhar\\helloworld\\": "src/"
         }
     },
+}
 ```
 
 `autoload` disana digunakan agar source code kita dapat diakses oleh project lain yang nantinya akan menggunakan library kita.

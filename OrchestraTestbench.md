@@ -53,3 +53,127 @@ Pada tutorial ini menggunakan Testbench 7.4.
 Kita akan langsung meneruskan implementasi dari tutorial topik sebelumnya.
 
 ### Langkah pertama 
+
+Menambahkan Orchestra Testbench dan juga PHPUnit pada project `composer-test`: (untuk versi testbench dapat menyesuaikan)
+
+```
+composer require --dev "orchestra/testbench"
+composer require --dev "phpunit/phpunit"
+```
+
+`--dev` digunakan supaya package Testbench hanya dijadikan kebutuhan pada lingkungan pengembangan saja (bagian `require-dev` pada `composer.json`). Untuk menggunakan testbench versi yang tertentu dapat dilakukan dengan `"orchestra/testbench=^x.x"` dimana `x.x` merupakan versi testbench yang dipilih.
+
+Composer akan mengubah isi dari `composer.json` dan menambahkan Testbench pada bagian `require-rev`:
+
+```json
+{
+  "require-dev": {
+        "orchestra/testbench": "^7.4",
+        "phpunit/phpunit": "^9.5"
+    },
+}
+```
+
+### Langkah kedua
+
+Buatlah sebuah file konfigurasi PHPUnit, bernama `phpunit.xml` pada root folder.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    bootstrap="vendor/autoload.php"
+    backupGlobals="false"
+    backupStaticAttributes="false"
+    colors="true"
+    verbose="true"
+    convertErrorsToExceptions="true"
+    convertNoticesToExceptions="true"
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
+>
+    <coverage>
+        <include>
+            <directory suffix=".php">src/</directory>
+        </include>
+    </coverage>
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="DB_CONNECTION" value="testing"/>
+        <env name="APP_KEY" value="base64:2fl+Ktvkfl+Fuz4Qp/A75G2RTiWVA/ZoKZvp6fiiM10="/>
+    </php>
+</phpunit>
+```
+
+Perhatikan bahwa terdapat dua *environment variable* yang akan dibuat oleh PHPUnit:
+* DB_CONNECTION, untuk mengatur database yang digunakan pada saat testing
+* APP_KEY, untuk semua keperluan [enkripsi Laravel](https://laravel.com/docs/8.x/encryption). Dapat dilewati apabila tidak ada testing yang terkait dengan fitur ini.
+
+### Langkah ketiga
+
+Mengimplementasi `/tests/TestCase.php`.
+
+```php
+<?php
+
+namespace azhar\helloworld\Tests;
+
+class TestCase extends \Orchestra\Testbench\TestCase
+{
+    public function setUp(): void
+    {
+        parent::setUp();
+        # Set-up tambahan seperti inisialisasi Model.
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            # CustomServiceProvider.class,
+        ];
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        # Implementasi setting-up environment
+    }
+}
+
+?>
+```
+
+### Langkah keempat
+
+Setelah membuat kerangka untuk testing, pastikan untuk menambahkannya pada `composer.json` agar dapat dilakukan *autoloading*.
+
+```json
+{
+    "autoload-dev": {
+        "psr-4": {
+            "azhar\\helloworld\\Tests\\": "tests/"
+        }
+    },
+}
+```
+
+### Langkah kelima
+
+Lakukan command berikut untuk men-*generate* ulang *autoloading*:
+
+```sh
+composer dump-autoload
+```
+
+### Langkah keenam 
+
+Untuk melakukant test dapat menggunakan 
+`phpunit` atau `./vendor/bin/phpunit` pada terminal.
