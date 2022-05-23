@@ -2,7 +2,7 @@
 
 1. Daffa Muhamad Azhar 05111940000037
 2. 
-3. 
+3. Putu Ananda Satria Adi 05111940000113
 
 ## Daftar Isi
 
@@ -12,6 +12,6 @@
 - [Facade]
 - [Configuration]
 - [Command]
-- [Models & Migrations]
-- [Controller, Route, View]
-- [Events & Listeners]
+- [Models & Migrations](ModelsMigrations.md)
+- [Controller, Route, View](ControllerRouteView.md)
+- [Events & Listeners](EventsListeners.md)
