@@ -9,9 +9,9 @@
 - [Composer](Composer.md)
 - [Orchestra Testbench & Testing](OrchestraTestbench.md)
 - [Service Provider](ServiceProvider.md)
-- [Facade]
-- [Configuration]
-- [Command]
+- [Facade](Facades.md)
+- [Configuration](Configuration.md)
+- [Command](Command.md)
 - [Models & Migrations](ModelsMigrations.md)
 - [Controller, Route, View](ControllerRouteView.md)
 - [Events & Listeners](EventsListeners.md)
