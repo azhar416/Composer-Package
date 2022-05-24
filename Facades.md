@@ -22,7 +22,7 @@ Pada tutorial ini, kita akan mencoba untuk membuat kelas kalkulator untuk packag
 
 Pada directory `/src` kita akan membuat kelas `kalkulator.php` yang memiliki method add(), subtract(), dan clear(). Semua method nantinya akan mereturn objectnya sendiri agar kita dapat menggunakannya secara functional
 
-```
+```php
 <?php
 
 namespace yusuf\HelloWorld;
@@ -65,7 +65,7 @@ class Calculator
 
 Pada direktori `src/Facades` kita membuat kelas facade yang melakukan extends kelas `Illuminate\Support\Facades\Facade`.
 
-```
+```php
 <?php
 
 namespace yusuf\HelloWorld\Facades;
@@ -86,7 +86,7 @@ Sekarang, kita bisa mengakses facade calculator dengan mengimport namespace use 
 
 Kita melakukan register binding service container kita dengan mengakses class  `CalculatorServiceProvider.php` pada direktori `src/`
 
-```
+```php
 <?php
 
 namespace yusuf\HelloWorld;
@@ -106,7 +106,7 @@ class CalculatorServiceProvider extends ServiceProvider
 }
 ```
 sehingga hasil nya
-```
+```php
 <?php
 
 namespace yusuf\HelloWorld;
@@ -167,7 +167,7 @@ class CalculatorServiceProvider extends ServiceProvider
 
 Laravel juga memungkinkan kita untuk mendaftarkan alias yang dapat meregister facade di root namespace :O. Kita dapat mendefine alias tersebut pada file composer.json kita seperti berikut.
 
-```
+```json
 {
     ...
 
@@ -185,7 +185,7 @@ Laravel juga memungkinkan kita untuk mendaftarkan alias yang dapat meregister fa
 ```
 Tampilan `Composer.json` sebagai berikut
 
-```
+```json
 {
     "name": "YusufA/hello-composer",
     "description": "Simple hello world Composer package.",
