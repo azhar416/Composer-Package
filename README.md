@@ -1,7 +1,7 @@
 # Laravel Composer Package
 
 1. Daffa Muhamad Azhar 05111940000037
-2. 
+2. Yusuf Anfasya      05111940000077
 3. Putu Ananda Satria Adi 05111940000113
 
 ## Daftar Isi
